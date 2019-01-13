@@ -33,9 +33,10 @@ search() {
 }
 while true; do
 dirarray=$(ls -a)
-for((i=2;i<"${#dirarray[@]}";i++)); do #start at 2 to avoid .. and .
-	if [ -d "${dirarray[i]}" ]; then
-		cd "${dirarray[i]}" || exit
+for dir in "${dirarray[@]}"; do
+	if [ -d "$dir" ]; then
+		cd "$dir" || exit
+		echo "in new dir"
 		search "$searchpattern"
 		while true ; do
 			read -rp "Is this what you are looking for? " yn
@@ -46,6 +47,9 @@ for((i=2;i<"${#dirarray[@]}";i++)); do #start at 2 to avoid .. and .
 				*) echo "Please enter yes or no ";;
 			esac
 		done
+	else 
+		echo "in else part"
+		exit
 	fi
 done
 done
