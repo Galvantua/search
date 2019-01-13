@@ -35,9 +35,10 @@ search() {
 	#$1=search criteria
 	ls -laR | grep "$1"
 }
-while true; do
 dirarray=$(ls -a)
-for ((i=2; i<"${#dirarray[@]}"; i++)); do
+i=2
+while true; do
+for ((i<"${#dirarray[@]}"; i++)); do
 	if [ -d "${dirarray[i]}" ]; then
 		cd "${dirarray[i]}" || exit
 		echo "in new dir"
