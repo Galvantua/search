@@ -53,7 +53,6 @@ for dir in "${dirarray[@]}"; do
 		done
 	else 
 		echo "in else part"
-		exit
 	fi
 done
 done
