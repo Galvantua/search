@@ -1,5 +1,6 @@
 #!/bin/bash
 
+updatedb
 searchpattern=$1
 results=$(locate "$searchpattern")
 
@@ -10,16 +11,29 @@ elif [ "$results" != "" ]
 then
 	echo "The results of locate are below:"
 	echo "$results"
-	exit
+	while true ; do
+		read -rp "Is this what you are looking for? " yn
+		case "$yn" in
+			[Yy]*)
+				exit 0
+			;;
+			[Nn]*)
+				break
+			;;
+			*)
+				echo "Please enter yes or no: "
+			;;
+		esac
+	done	
 fi
-echo $?
+
 search() {
 	#$1=search criteria
 	ls -laR | grep "$1"
 }
 while true; do
 dirarray=$(ls -a)
-for((i=0;i<"${#dirarray[@]}";i++)); do 
+for((i=2;i<"${#dirarray[@]}";i++)); do #start at 2 to avoid .. and .
 	if [ -d "${dirarray[i]}" ]; then
 		cd "${dirarray[i]}" || exit
 		search "$searchpattern"
