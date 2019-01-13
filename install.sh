@@ -1,2 +1,2 @@
 #!/bin/bash
-mv ./search.sh /bin/
+mv search.sh /bin/
