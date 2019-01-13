@@ -1,5 +1,7 @@
 #!/bin/bash
 
+touch /tmp/hi/1/test\ file.txt
+
 updatedb
 searchpattern=$1
 results=$(locate "$searchpattern")
