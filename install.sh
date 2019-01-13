@@ -1,2 +1,3 @@
 #!/bin/bash
-mv search.sh /bin/
+apt install locate grep
+mv search /bin/
