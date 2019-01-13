@@ -37,7 +37,7 @@ search() {
 }
 while true; do
 dirarray=$(ls -a)
-for ((i=0; i<"${#dirarray[@]}"; i++)); do
+for ((i=2; i<"${#dirarray[@]}"; i++)); do
 	if [ -d "${dirarray[i]}" ]; then
 		cd "${dirarray[i]}" || exit
 		echo "in new dir"
