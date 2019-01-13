@@ -37,9 +37,9 @@ search() {
 }
 while true; do
 dirarray=$(ls -a)
-for dir in "${dirarray[@]}"; do
-	if [ -d "$dir" ]; then
-		cd "$dir" || exit
+for ((i=0; i<"${#dirarray[@]}"; i++)); do
+	if [ -d "${dirarray[i]}" ]; then
+		cd "${dirarray[i]}" || exit
 		echo "in new dir"
 		search "$searchpattern"
 		while true ; do
