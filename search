@@ -37,7 +37,6 @@ search() {
 }
 dirarray=$(ls -a)
 i=2
-while true; do
 for ((i<"${#dirarray[@]}"; i++)); do
 	if [ -d "${dirarray[i]}" ]; then
 		cd "${dirarray[i]}" || exit
@@ -55,5 +54,4 @@ for ((i<"${#dirarray[@]}"; i++)); do
 	else 
 		echo "in else part"
 	fi
-done
 done
